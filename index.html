@@ -60,7 +60,7 @@
     a { color: inherit; }
 
     .stage {
-      max-width: 540px;
+      max-width: 720px;
       margin: 0 auto;
       padding: 2.4rem 1.5rem 4rem;
       min-height: 100vh;
@@ -158,6 +158,78 @@
       color: var(--muted);
       margin: 0;
       line-height: 1.65;
+    }
+
+    /* ── Embedded survey ─────────────────────────────────── */
+    .survey {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.4rem 1.4rem 1.6rem;
+      margin-bottom: 2.4rem;
+      box-shadow: 0 8px 24px rgba(26, 26, 26, 0.04);
+    }
+    .survey__head {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 1.1rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .survey__icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--bronze);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    .survey__head h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 0 0 0.2rem;
+      line-height: 1.25;
+    }
+    .survey__head p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .survey__frame-wrap {
+      position: relative;
+      width: 100%;
+      background: var(--paper);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .survey__frame-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 1200px;   /* tall — Forms decide their own internal scroll */
+      border: 0;
+    }
+    .survey__fallback {
+      margin-top: 0.85rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.55;
+    }
+    .survey__fallback a {
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
     }
 
     /* ── Action stack ─────────────────────────────────────── */
@@ -360,23 +432,36 @@
     <h1>Welcome — <em>thanks for stopping by.</em></h1>
     <p class="hero__lead">
       We're here today taking prayer requests, giving away Bibles, and asking how
-      our church can serve Lake Stevens better. Pick one to get started.
+      our church can serve Lake Stevens better. Start with the survey below.
     </p>
   </section>
 
-  <!-- ── Three primary actions ── -->
-  <nav class="actions" aria-label="Stand actions">
+  <!-- ── Embedded community survey ── -->
+  <section class="survey" aria-label="Community survey">
+    <div class="survey__head">
+      <span class="survey__icon" aria-hidden="true">📋</span>
+      <div>
+        <h2>Community survey</h2>
+        <p>A few minutes — help us understand how MOFT can serve Lake Stevens better.</p>
+      </div>
+    </div>
+    <div class="survey__frame-wrap">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfkMZU0R8SIbpG_azusN10cab4HvUPbZ3-xMGDw3rO6MbVEwA/viewform?embedded=true"
+        title="MOFT community survey"
+        loading="lazy">
+        Loading…
+      </iframe>
+    </div>
+    <p class="survey__fallback">
+      Trouble with the form here?
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfkMZU0R8SIbpG_azusN10cab4HvUPbZ3-xMGDw3rO6MbVEwA/viewform"
+         target="_blank" rel="noopener">Open it in a new tab →</a>
+    </p>
+  </section>
 
-    <a class="action action--primary"
-       href="https://docs.google.com/forms/d/e/1FAIpQLSfkMZU0R8SIbpG_azusN10cab4HvUPbZ3-xMGDw3rO6MbVEwA/viewform"
-       target="_blank" rel="noopener">
-      <span class="action__icon" aria-hidden="true">📋</span>
-      <span class="action__body">
-        <strong class="action__title">Take the community survey</strong>
-        <small class="action__sub">A few minutes — help us serve Lake Stevens better.</small>
-      </span>
-      <span class="action__arrow" aria-hidden="true">→</span>
-    </a>
+  <!-- ── Secondary actions ── -->
+  <nav class="actions" aria-label="More ways to connect">
 
     <a class="action"
        href="mailto:contact@messengeroftruth.org?subject=Prayer%20request%20from%20the%20stand&body=Hi%20MOFT%20team%2C%0A%0AI%27d%20like%20prayer%20for%3A%0A%0A">
